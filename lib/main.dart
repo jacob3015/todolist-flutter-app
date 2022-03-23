@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+
+import './pages.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,27 +11,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return const NeumorphicApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Todo List App',
+      theme: NeumorphicThemeData(
+        baseColor: Color(0xFFDDDDDD),
+        lightSource: LightSource.topLeft,
+        depth: 6,
+        intensity: 0.8,
+        appBarTheme: NeumorphicAppBarThemeData(
+          centerTitle: true,
+          textStyle: TextStyle(
+            fontSize: 24,
+          ),
+        ),
       ),
-      home: const MyHomePage(),
+      home: ListPage(),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
   }
 }
