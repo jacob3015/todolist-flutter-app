@@ -1,6 +1,6 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-import './custom_widgets.dart';
+import './widgets.dart';
 
 // list page
 class ListPage extends StatefulWidget {
