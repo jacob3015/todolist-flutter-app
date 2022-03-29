@@ -1,6 +1,6 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-import './widgets.dart';
+import './custom_bottom_sheet_widget.dart';
 
 // list page
 class ListPage extends StatefulWidget {
@@ -37,7 +37,3 @@ class _ListPageState extends State<ListPage> {
     );
   }
 }
-
-// start page
-
-// splash screen

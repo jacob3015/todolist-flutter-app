@@ -56,9 +56,3 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     );
   }
 }
-
-// App Bar
-
-// List View
-
-// Checkbox Tile
