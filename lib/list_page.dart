@@ -1,6 +1,7 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-
-import './custom_bottom_sheet_widget.dart';
+import 'package:provider/provider.dart';
+import 'package:todoapp/task_list.dart';
+import 'package:todoapp/task_page.dart';
 
 // list page
 class ListPage extends StatefulWidget {
@@ -23,17 +24,21 @@ class _ListPageState extends State<ListPage> {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                showModalBottomSheet(
-                    context: context,
-                    builder: (context) {
-                      return CustomBottomSheet();
-                    }
-                );
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TaskPage()));
               },
               icon: const Icon(Icons.add),
           )
         ],
       ),
+      body: ListView.builder(
+          itemCount: Provider.of<TaskList>(context, listen: false).getTaskList.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              child: Text(Provider.of<TaskList>(context, listen: false).getTaskList[index].getTitle),
+            );
+          }),
     );
   }
 }

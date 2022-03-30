@@ -1,9 +1,19 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-
-import './list_page.dart';
+import 'package:provider/provider.dart';
+import 'package:todoapp/file_handler.dart';
+import 'package:todoapp/task_list.dart';
+import 'package:todoapp/list_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => TaskList()),
+        Provider(create: (context) => FileHandler()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
