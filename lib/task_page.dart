@@ -3,9 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:todoapp/list_page.dart';
 import 'package:todoapp/task.dart';
 import 'package:todoapp/task_list.dart';
-import 'package:todoapp/file_handler.dart';
-import 'dart:convert';
 
+// TaskPage for create new task
 class TaskPage extends StatefulWidget {
   const TaskPage({Key? key}) : super(key: key);
 
@@ -15,6 +14,7 @@ class TaskPage extends StatefulWidget {
 
 class _TaskPageState extends State<TaskPage> {
 
+  // TextControllers for TextFields
   final titleController = TextEditingController();
   final detailsController = TextEditingController();
 
@@ -46,31 +46,36 @@ class _TaskPageState extends State<TaskPage> {
       body: Center(
         child: Column(
           children: <Widget>[
+
+            // TextField for input task title
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextField(
                 controller: titleController,
               ),
             ),
+
+            // TextField for input task details
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextField(
                 controller: detailsController,
               ),
             ),
-            TextButton(
-              onPressed: () {
-                Task task = Task(titleController.text, detailsController.text);
-                Provider.of<TaskList>(context, listen: false).addTask(task);
-                String jsonString = jsonEncode(
-                    Provider.of<TaskList>(context, listen: false).toJson()
+
+            // Button for save the task
+            Consumer<TaskList>(
+              builder: (context, tasks, child) {
+                return TextButton(
+                  onPressed: () {
+                    tasks.addTask(Task(titleController.text, detailsController.text));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ListPage()));
+                  },
+                  child: const Text('Save'),
                 );
-                Provider.of<FileHandler>(context, listen: false).writeJson(jsonString);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ListPage()));
-              },
-              child: const Text('Save'),
+              }
             )
           ],
         ),
