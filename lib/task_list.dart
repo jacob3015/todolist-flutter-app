@@ -11,17 +11,6 @@ class TaskList extends ChangeNotifier {
 
   TaskList() : _tasks = [];
 
-  TaskList.fromList(List<Task> tasks) : _tasks = tasks;
-
-  // Constructor using json
-  TaskList.fromJson(Map<String, dynamic> json)
-      : _tasks = json['tasks'];
-
-  // Encode task list to json
-  Map<String, dynamic> toJson() => {
-    'tasks' : _tasks
-  };
-
   // Getter
   List<Task> get  getTaskList {
     return _tasks;
