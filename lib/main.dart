@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
-import 'package:todoapp/file_handler.dart';
 import 'package:todoapp/task_list.dart';
 import 'package:todoapp/list_page.dart';
 
-// Need task list provider on root of the app
 void main() {
 
   // Run app
@@ -27,6 +23,8 @@ class MyApp extends StatelessWidget {
     return const NeumorphicApp(
       debugShowCheckedModeBanner: false,
       title: 'Todo List App',
+
+      // Apply Neumorphic design
       theme: NeumorphicThemeData(
         baseColor: Color(0xFFDDDDDD),
         lightSource: LightSource.topLeft,

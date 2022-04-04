@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:todoapp/file_handler.dart';
 import 'package:todoapp/task.dart';
 
 // TaskList for treat tasks, It needs to be provider
@@ -10,7 +8,6 @@ class TaskList extends ChangeNotifier {
 
   // List for treat tasks
   final List<Task> _tasks;
-  final FileHandler _fileHandler = FileHandler();
 
   TaskList() : _tasks = [];
 
@@ -33,7 +30,6 @@ class TaskList extends ChangeNotifier {
   // Add task to the list, needs file handler for write the change of task list
   void addTask(Task task) {
     _tasks.add(task);
-    //_fileHandler.writeJson(jsonEncode(toJson()));
     notifyListeners();
   }
 
@@ -41,7 +37,6 @@ class TaskList extends ChangeNotifier {
   void deleteTask(Task task) {
     try {
       _tasks.remove(task);
-      //_fileHandler.writeJson(jsonEncode(toJson()));
       notifyListeners();
     }
     catch(e) {

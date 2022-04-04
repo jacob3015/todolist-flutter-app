@@ -51,6 +51,9 @@ class _TaskPageState extends State<TaskPage> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextField(
+                decoration: const InputDecoration(
+                  hintText: 'Task title',
+                ),
                 controller: titleController,
               ),
             ),
@@ -59,6 +62,9 @@ class _TaskPageState extends State<TaskPage> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextField(
+                decoration: const InputDecoration(
+                  hintText: 'Task details',
+                ),
                 controller: detailsController,
               ),
             ),
